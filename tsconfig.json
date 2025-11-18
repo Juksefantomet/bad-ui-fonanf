@@ -1,0 +1,94 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    // ======================
+    // File Layout
+    // ======================
+    // Source lives in src/, emit (via tsup) goes to dist/
+    "rootDir": "./src",
+    // tsup will emit to dist/, but TS still wants an outDir for declarations / tooling
+    "outDir": "./dist",
+
+    // ======================
+    // Environment Settings
+    // ======================
+    // Use NodeNext module semantics so imports/exports match modern Node + bundlers
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+
+    // Maximize compatibility and let bundlers choose final target
+    "target": "esnext",
+
+    // React UI library: include DOM + ES libs
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+
+    // Let consuming app provide global types; keep this empty unless you
+    // really need a specific global type set (like "node")
+    "types": [],
+
+    // If you need Node types in _this_ repo (build scripts, etc),
+    // you can uncomment the next line and add @types/node:
+    // "types": ["node"],
+
+    // ======================
+    // Emit / Outputs
+    // ======================
+    // tsup will handle bundling; TS still controls declarations and sourcemaps
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false, // let tsup emit JS + DTS
+
+    // Useful if you want import JSON files in helpers (not required)
+    "resolveJsonModule": true,
+
+    // Interop niceties for CJS/ESM world
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    // ======================
+    // JSX / React
+    // ======================
+    "jsx": "react-jsx",         // React 17+ JSX transform
+    "jsxImportSource": "react", // for tooling clarity
+
+    // ======================
+    // Strictness / Safety
+    // ======================
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Add more strictness if you want:
+    // "noImplicitReturns": true,
+    // "noImplicitOverride": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+
+    // ======================
+    // Module & Build Behavior
+    // ======================
+    // Keep import/export syntax verbatim (good for bundlers + exports field)
+    "verbatimModuleSyntax": false,
+
+    // Treat each file as a module, required by many bundlers / tools
+    "isolatedModules": true,
+
+    // Flag imports that do work on import (side-effect only) and aren’t marked
+    // This helps keep your library tree-shakeable
+    "noUncheckedSideEffectImports": true,
+
+    // Force everything to be treated as a module unless clearly script-like
+    "moduleDetection": "force",
+
+    // Skip type-checking of node_modules for speed
+    "skipLibCheck": true,
+
+    // Ensure consistent casing across platforms (git/CI/Windows/macOS)
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"],
+  "exclude": ["dist", "node_modules"]
+}
