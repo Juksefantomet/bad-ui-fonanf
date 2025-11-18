@@ -22,8 +22,8 @@ npm pack
 npm install ../bad-ui-fonanf/bad-ui-fonanf-0.0.1.tgz
 
 
-npm login
+npm login --registry=https://registry.npmjs.org/
 
-npm publish --access public
+npm publish --access public --registry=https://registry.npmjs.org/
 ```
 
